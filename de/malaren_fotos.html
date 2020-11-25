@@ -12,31 +12,30 @@
 	<link rel="stylesheet" href="../css/screen.css">
 	
 	<link rel="stylesheet" href="../css/lightbox.css">
-	<script src="../js/bootstrap.bundle.min.js"></script>
-	<script type="text/javascript" src="../js/jquery.js"></script>
-		<script type="text/javascript" src="../js/lightbox.min.js"></script>
-		<script>
-			lightbox.option({'resizeDuration': 0, 'wrapAround': false, 'albumLabel': "%1/%2"})
-		</script>
-
-	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script src="../js/bootstrap.bundle.min.js"></script>	
 	
-	<script type="text/javascript"  src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touch/1.1.0/jquery.touch.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script type="text/javascript" src="../js/lightbox.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touch/1.1.0/jquery.touch.min.js"></script>
+	<script>
+		lightbox.option({'resizeDuration': 0, 'wrapAround': false, 'albumLabel': "%1/%2"})
+		$(function(){
+			var e = $('#lightbox');
 
-<script>$(function(){
-    var e = $('#lightbox');
+			e.touch({
+				delegateSelector: '.lb-next, .lb-prev'
+			});
 
-    e.touch({
-        delegateSelector: '.lb-next, .lb-prev'
-    });
+			e.on('swipeLeft', '.lb-next', function(event) {
+				$('.lb-next').trigger("click")
+			}).on('swipeRight', '.lb-prev', function(event) {
+				$('.lb-prev').trigger("click")
+			});
+		});
+	</script>
+	
 
-    e.on('swipeLeft', '.lb-next', function(event) {
-        $('.lb-next').trigger("click")
-    }).on('swipeRight', '.lb-prev', function(event) {
-        $('.lb-prev').trigger("click")
-    });
-});
-</script>
+
 
 </head>
 
